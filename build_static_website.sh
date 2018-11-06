@@ -17,3 +17,4 @@ echo
 echo
 
 ./replace_index_html_with_root.sh
+echo

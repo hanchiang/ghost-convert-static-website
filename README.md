@@ -17,5 +17,5 @@ Run `./build_static_website`, which prompts you for your localhost website and y
 `Enter the domain of your live website:` mysite.com
 
 ## Output
-A copy of the static website is written to the `static_website/` directory.  
+A copy of the static website is written to the path `../ghost-static-generated/`.  
 Upload it to a static web host!

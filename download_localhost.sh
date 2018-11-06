@@ -4,7 +4,7 @@
 echo "Downloading from $1..."
 
 mkdir -p ../ghost-static-generated
-find ../ghost-static-generated -mindepth 1 ! -iname "README.md" ! -iname "\.git" -delete
+find ../ghost-static-generated -mindepth 1 ! -iname "README.md" ! -path "*.git*" -delete
 
 wget -mkEpnp $1
 mv $1/* ../ghost-static-generated
