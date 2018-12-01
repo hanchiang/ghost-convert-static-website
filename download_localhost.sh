@@ -10,10 +10,17 @@ wget -mkEpnp $1
 
 # get sitemap!
 wget $1/sitemap.xml
-wget $1/sitemap.xsl
+
+# Awesome script to crawl sitemap.xml from: https://gist.github.com/pix0r/6083058
+XML=`wget -O - --quiet $1/sitemap.xml`
+URLS=`echo $XML | egrep -o "<loc>[^<>]*</loc>" | sed -e 's:</*loc>::g'`
+echo $URLS | tr ' ' '\n' | wget -i - --wait=0.2 --random-wait -nv
+
+# Remove xsl reference, cos `xml unsafe attempt to load url`?
+sed -i "s/<?xml-stylesheet.*?>//" sitemap*;
 
 mv $1/* ../ghost-static-generated
-mv sitemap.* ../ghost-static-generated
+mv sitemap* ../ghost-static-generated
 
 rm -r $1
 echo "$1 downloaded!"

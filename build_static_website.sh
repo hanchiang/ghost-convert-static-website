@@ -1,6 +1,17 @@
 read -p "Enter the domain of your localhost server(e.g. localhost:3000): " localhost
 read -p "Enter the domain of your live website(root domain only, e.g. mysite.com): " livedomain
 
+# Set default...
+if [ -z $localhost ]
+then
+  localhost="localhost:2368"
+fi
+
+if [ -z $livedomain ]
+then
+  livedomain="yaphc.com"
+fi
+
 ./download_localhost.sh $localhost
 echo
 
