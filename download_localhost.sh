@@ -10,9 +10,10 @@ wget -mkEpnp $1
 
 # get sitemap!
 wget $1/sitemap.xml
+wget $1/sitemap.xsl
 
 mv $1/* ../ghost-static-generated
-mv sitemap.xml ../ghost-static-generated
+mv sitemap.* ../ghost-static-generated
 
 rm -r $1
 echo "$1 downloaded!"
