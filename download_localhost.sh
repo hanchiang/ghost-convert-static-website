@@ -9,6 +9,9 @@ find ../ghost-static-generated -mindepth 1 ! -iname "README.md" ! -path "*.git*"
 # Download an offline copy of the local website
 wget -mkEpnp $1
 
+# get sitemap!
+wget $1/sitemap.xml
+
 # Awesome script to crawl sitemap.xml from: https://gist.github.com/pix0r/6083058
 XML=`wget -O - --quiet $1/sitemap.xml`
 URLS=`echo $XML | egrep -o "<loc>[^<>]*</loc>" | sed -e 's:</*loc>::g'`
